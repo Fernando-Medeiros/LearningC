@@ -3,3 +3,5 @@
 **/output
 /.vs/C++/FileContentIndex
 /.vs/C++/v17
+**/.vs
+/.vs/slnx.sqlite
