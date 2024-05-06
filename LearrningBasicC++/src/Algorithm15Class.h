@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 class Student {
 private:
@@ -33,4 +34,19 @@ public:
 	int GetStudentId() const;
 	int GetCourseId() const;
 	char GetGrade() const;
+};
+
+class SchoolHandler {
+private:
+	std::vector<Student> students;
+	std::vector<Course> courses;
+	std::vector<Grade> grades;
+
+	float GetNumGrade(char letter) const;
+public:
+	void Add(Student student);
+	void Add(Course course);
+	void Add(Grade grade);
+	float GetGPA(int id) const;
+	std::string GetStudentName(int id) const;
 };
