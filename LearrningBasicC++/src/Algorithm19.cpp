@@ -29,6 +29,4 @@ static void Algorithm19() {
 	GPA = handler.GetGPA(studentId);
 
 	std::cout << "The GPA for " << studentName << " is " << GPA << std::endl;
-
-	handler.ReportGrade(studentId);
 }

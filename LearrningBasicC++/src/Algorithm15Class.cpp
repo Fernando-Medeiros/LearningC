@@ -1,5 +1,4 @@
 #include "Algorithm15Class.h"
-#include <iostream>
 
 Student::Student(int id, std::string name) {
 	Id = id;
@@ -64,63 +63,37 @@ void SchoolHandler::Add(Course course) {
 void SchoolHandler::Add(Grade grade) {
 	grades.push_back(grade);
 }
-std::string SchoolHandler::GetStudentName(int studentId) const {
+std::string SchoolHandler::GetStudentName(int id) const {
 	for (int x = 0; x < students.size(); x++) {
-		if (students.at(x).GetId() == studentId)
+		if (students.at(x).GetId() == id)
 		{
 			return students.at(x).GetName();
 		}
 	}
 }
 float SchoolHandler::GetGPA(int studentId) const {
-	float points = 0.0f, credits = 0.0f;
+	const Grade* grade;
+	const Course* course;
+	float pts = 0.0f, cdts = 0.0f;
 
 	for (int x = 0; x < grades.size(); x++) {
-		auto grade = &grades.at(x);
+		grade = &grades.at(x);
 
 		if (grade->GetStudentId() == studentId)
 		{
 			for (int c = 0; c < courses.size(); c++) {
-				auto course = &courses.at(c);
+				course = &courses.at(c);
 
 				if (grade->GetCourseId() == course->GetId())
 				{
 					auto credit = course->GetCredits();
 
-					credits += credit;
-					points += GetNumGrade(grade->GetGrade()) * credit;
+					pts += GetNumGrade(grade->GetGrade()) * credit;
+					cdts += credit;
 					break;
 				}
 			}
 		}
 	}
-	return points / credits;
-}
-void SchoolHandler::ReportGrade(int studentId) const {
-	float points = 0.0f, credits = 0.0f;
-
-	std::cout << "Report Card for " << GetStudentName(studentId) << std::endl;
-
-	for (int x = 0; x < grades.size(); x++) {
-		auto grade = &grades.at(x);
-
-		if (grade->GetStudentId() == studentId)
-		{
-			for (int c = 0; c < courses.size(); c++) {
-				auto course = &courses.at(c);
-
-				if (grade->GetCourseId() == course->GetId())
-				{
-					std::cout << course->GetName() << ": " << grade->GetGrade() << std::endl;
-
-					auto credit = course->GetCredits();
-
-					credits += credit;
-					points += GetNumGrade(grade->GetGrade()) * credit;
-					break;
-				}
-			}
-		}
-	}
-	std::cout << "GPA: " << (points / credits) << std::endl;
+	return pts / cdts;
 }
