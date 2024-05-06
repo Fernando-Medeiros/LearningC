@@ -47,6 +47,7 @@ public:
 	void Add(Student student);
 	void Add(Course course);
 	void Add(Grade grade);
-	float GetGPA(int id) const;
-	std::string GetStudentName(int id) const;
+	void ReportGrade(int studentId) const;
+	float GetGPA(int studentId) const;
+	std::string GetStudentName(int studentId) const;
 };

@@ -150,6 +150,7 @@
     <ClCompile Include="src\Algorithm15Class.cpp" />
     <ClCompile Include="src\Algorithm18.cpp" />
     <ClCompile Include="src\Algorithm19.cpp" />
+    <ClCompile Include="src\Algorithm20.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Algorithm11Class.h" />
