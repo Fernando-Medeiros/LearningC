@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Algorithm16.cpp" />
+    <ClCompile Include="src\Algorithm17.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="src\Algorithm00.cpp" />
     <ClCompile Include="src\Algorithm01.cpp" />
@@ -146,6 +148,8 @@
     <ClCompile Include="src\Algorithm14.cpp" />
     <ClCompile Include="src\Algorithm15.cpp" />
     <ClCompile Include="src\Algorithm15Class.cpp" />
+    <ClCompile Include="src\Algorithm18.cpp" />
+    <ClCompile Include="src\Algorithm19.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Algorithm11Class.h" />
