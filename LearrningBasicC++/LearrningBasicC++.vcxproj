@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Algorithm20.cpp" />
+    <ClCompile Include="src\Algorithm20.cpp" />
     <ClCompile Include="src\Algorithm16.cpp" />
     <ClCompile Include="src\Algorithm17.cpp" />
     <ClCompile Include="program.cpp" />
@@ -151,10 +151,17 @@
     <ClCompile Include="src\Algorithm15Class.cpp" />
     <ClCompile Include="src\Algorithm18.cpp" />
     <ClCompile Include="src\Algorithm19.cpp" />
+    <ClCompile Include="src\Algorithm21.cpp" />
+    <ClCompile Include="src\Algorithm22.cpp" />
+    <ClCompile Include="src\Algorithm23.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Algorithm11Class.h" />
     <ClInclude Include="src\Algorithm15Class.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="raw\people.txt" />
+    <Text Include="raw\students.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
