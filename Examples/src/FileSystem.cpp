@@ -7,7 +7,7 @@ static bool exists(const std::string& path) {
 }
 
 static void FileSystem() {
-	std::string home = getenv("HOME");
+	std::string home = "HOME"; // Depreacated getenv("HOME");
 	home = home + "/";
 
 	std::cout << (exists(home + "Downloads") ? "Yes" : "Not") << "\n";

@@ -134,6 +134,7 @@
     <ClCompile Include="src\ConstReferences.cpp" />
     <ClCompile Include="src\DeclareVariables.cpp" />
     <ClCompile Include="src\FileSystem.cpp" />
+    <ClCompile Include="src\SizeOf.cpp" />
     <ClCompile Include="src\UnorderedMap.cpp" />
     <ClCompile Include="src\LambdaFunction.cpp" />
     <ClCompile Include="src\Person.cpp" />

@@ -2,13 +2,23 @@
 #include <memory>
 
 static void Pointers() {
-	// V
-	auto autoPtr{ std::make_shared<Person>() };
+	// Better - Smart Pointer
+	/*
+	auto ptr{ std::make_shared<Person>("Mike", 18) };
+	std::shared_ptr<Person> personPtr{new Person("Mike", 25)};
+	*/
+	std::shared_ptr<Person> personPtr{};
 
-	std::shared_ptr<Person> personPtr{ std::make_shared<Person>() };
+	personPtr = std::make_shared<Person>("Mike", 20);
 
+	// For limited scope
+	auto autoPtr = new Person("Mike", 25);
+	delete autoPtr;
+	autoPtr = nullptr;
 
-	// X
-	auto ps = new Person("Mike", 25);
-	delete ps;
+	auto personObject = Person("Sophia", 18);
+	Person* ptr;
+	ptr = &personObject;
+	delete ptr;
+	ptr = nullptr;
 }

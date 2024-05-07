@@ -6,3 +6,4 @@ static void TypeConvertion() {
 	x = static_cast<int>(11.33f);
 	y = static_cast<float>(9);
 	l = static_cast<char>(22);
+}

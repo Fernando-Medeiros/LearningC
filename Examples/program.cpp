@@ -1,5 +1,7 @@
+#include "src/SizeOf.cpp"
 
 int main()
 {
-	return(0);
+	SizeOf();
+	return 0;
 }
