@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithm03.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="src\Algorithm00.cpp" />
     <ClCompile Include="src\Algorithm01.cpp" />
