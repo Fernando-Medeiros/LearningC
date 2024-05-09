@@ -134,6 +134,7 @@
     <ClCompile Include="shared\Print.cpp" />
     <ClCompile Include="src\Algorithm00.cpp" />
     <ClCompile Include="src\Algorithm01.cpp" />
+    <ClCompile Include="src\Algorithm02.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Algorithm01Num.h" />
