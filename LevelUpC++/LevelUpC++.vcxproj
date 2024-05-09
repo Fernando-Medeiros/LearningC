@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,12 +128,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Algorithm03.cpp" />
+    <ClCompile Include="src\Algorithm03.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="src\Algorithm00.cpp" />
     <ClCompile Include="src\Algorithm01.cpp" />
     <ClCompile Include="src\Algorithm02.cpp" />
-    <ClCompile Include="src\Algorithm03.cpp" />
+    <ClCompile Include="src\Algorithm04.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

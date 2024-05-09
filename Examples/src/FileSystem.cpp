@@ -3,7 +3,7 @@
 #include <string>
 
 static bool exists(const std::string& path) {
-	//return std::filesystem::exists(path);
+	return std::filesystem::exists(path);
 }
 
 static void FileSystem() {
