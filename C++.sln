@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LevelUpC++", "LevelUpC++\Le
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Examples", "Examples\Examples.vcxproj", "{6E55E3CD-A940-423E-A985-3A32AB1801C8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AdvancedC++", "AdvancedC++\AdvancedC++.vcxproj", "{DEE77E03-766C-47D9-B112-24100B11EDDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{6E55E3CD-A940-423E-A985-3A32AB1801C8}.Release|x64.Build.0 = Release|x64
 		{6E55E3CD-A940-423E-A985-3A32AB1801C8}.Release|x86.ActiveCfg = Release|Win32
 		{6E55E3CD-A940-423E-A985-3A32AB1801C8}.Release|x86.Build.0 = Release|Win32
+		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Debug|x64.ActiveCfg = Debug|x64
+		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Debug|x64.Build.0 = Debug|x64
+		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Debug|x86.ActiveCfg = Debug|Win32
+		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Debug|x86.Build.0 = Debug|Win32
+		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Release|x64.ActiveCfg = Release|x64
+		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Release|x64.Build.0 = Release|x64
+		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Release|x86.ActiveCfg = Release|Win32
+		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
