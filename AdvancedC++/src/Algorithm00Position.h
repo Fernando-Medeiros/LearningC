@@ -20,5 +20,6 @@ public:
 	Position operator * (const Position& pos) const;
 	void operator / (const Position& pos);
 	bool operator == (const Position&) const;
+	explicit(false) operator std::string() const;
 };
 

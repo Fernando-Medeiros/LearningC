@@ -60,3 +60,8 @@ bool Position::operator==(const Position& pos) const
 	return Horizontal() == pos.Horizontal()
 		&& Vertical() == pos.Vertical();
 }
+
+Position::operator std::string() const
+{
+	return ToString(); // Explicit(false)
+}

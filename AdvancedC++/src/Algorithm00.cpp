@@ -37,4 +37,9 @@ static void Algorithm00() {
 	Print("Object Position {}\n", objectPosition->ToString());
 
 	Print("Is Collision? {}\n", *playerPosition == *objectPosition);
+
+
+	std::string msg{ "Cast to string > explict(false) " };
+	msg += *playerPosition;
+	Print("{}\n", msg);
 }
