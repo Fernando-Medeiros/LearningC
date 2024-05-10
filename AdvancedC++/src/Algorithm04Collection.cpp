@@ -1,4 +1,4 @@
-#include "Algorithm04Container.h"
+#include "Algorithm04Collection.h"
 
 template<typename T>
 Collection<T>::Collection() = default;

@@ -1,5 +1,5 @@
 #include "../shared/Print.cpp"
-#include "Algorithm04Container.cpp"
+#include "Algorithm04Collection.cpp"
 #include <iostream>
 
 static void Algorithm04() {
