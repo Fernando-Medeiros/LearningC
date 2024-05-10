@@ -42,10 +42,13 @@
     <ClCompile Include="src\Algorithm04.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Algorithm04Container.cpp">
+    <ClCompile Include="src\Algorithm04Collection.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="src\Algorithm05.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Algorithm06.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +59,7 @@
     <ClInclude Include="src\Algorithm01Num.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="src\Algorithm04Container.h">
+    <ClInclude Include="src\Algorithm04Collection.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
