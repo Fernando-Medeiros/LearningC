@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Algorithm04Container.cpp" />
     <ClCompile Include="src\Algorithm01Num.cpp" />
     <ClCompile Include="src\Algorithm00Position.cpp" />
     <ClCompile Include="program.cpp" />
@@ -136,8 +137,11 @@
     <ClCompile Include="src\Algorithm01.cpp" />
     <ClCompile Include="src\Algorithm02.cpp" />
     <ClCompile Include="src\Algorithm03.cpp" />
+    <ClCompile Include="src\Algorithm04.cpp" />
+    <ClCompile Include="src\Algorithm05.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Algorithm04Container.h" />
     <ClInclude Include="src\Algorithm01Num.h" />
     <ClInclude Include="src\Algorithm00Position.h" />
   </ItemGroup>
