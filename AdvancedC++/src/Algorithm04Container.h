@@ -6,9 +6,10 @@
 
 using
 std::string,
-std::format,
 std::vector,
+std::format,
 std::move,
+std::swap,
 std::initializer_list;
 
 template<typename T>
@@ -24,6 +25,7 @@ public:
 	T Last()const;
 	string ToString()const;
 	void Append(T x);
+	Collection<T>& operator = (Collection<T> rhs);
 	Collection<T>& operator = (const Collection<T>& rhs);
 	Collection<T>& operator && (Collection<T>&& rhs) noexcept;
 };

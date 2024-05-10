@@ -45,7 +45,16 @@ void Collection<T>::Append(T x)
 }
 
 template<typename T>
-Collection<T>& Collection<T>::operator=(const Collection<T>& rhs)
+Collection<T>& Collection<T>::operator=(Collection<T> rhs) // swap
+{
+	if (this != &rhs) {
+		swap(collection, rhs.collection);
+	}
+	return *this;
+}
+
+template<typename T>
+Collection<T>& Collection<T>::operator=(const Collection<T>& rhs) // copy
 {
 	if (this != &rhs) {
 		Collection{ rhs.collection };
@@ -54,7 +63,7 @@ Collection<T>& Collection<T>::operator=(const Collection<T>& rhs)
 }
 
 template<typename T>
-Collection<T>& Collection<T>::operator&&(Collection<T>&& rhs)noexcept
+Collection<T>& Collection<T>::operator&&(Collection<T>&& rhs)noexcept // move
 {
 	if (this != &rhs) {
 		Collection{ move(rhs.collection) };
