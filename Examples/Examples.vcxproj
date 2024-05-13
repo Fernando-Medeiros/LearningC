@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="program.cpp" />
     <ClCompile Include="src\Arrays.cpp" />
+    <ClCompile Include="src\CallableConcept.cpp" />
     <ClCompile Include="src\ClassCto.cpp" />
     <ClCompile Include="src\Constants.cpp" />
     <ClCompile Include="src\ConstReferences.cpp" />
