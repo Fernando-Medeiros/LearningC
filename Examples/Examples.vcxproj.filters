@@ -75,4 +75,7 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="raw\Text.txt" />
+  </ItemGroup>
 </Project>

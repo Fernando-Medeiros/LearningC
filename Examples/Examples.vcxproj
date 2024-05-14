@@ -150,6 +150,9 @@
   <ItemGroup>
     <ClInclude Include="src\Person.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="raw\Text.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
