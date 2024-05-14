@@ -140,6 +140,7 @@
     <ClCompile Include="src\Format.cpp" />
     <ClCompile Include="src\SizeOf.cpp" />
     <ClCompile Include="src\StructBinding.cpp" />
+    <ClCompile Include="src\ConcurrencyThread.cpp" />
     <ClCompile Include="src\UnorderedMap.cpp" />
     <ClCompile Include="src\LambdaFunction.cpp" />
     <ClCompile Include="src\Person.cpp" />
