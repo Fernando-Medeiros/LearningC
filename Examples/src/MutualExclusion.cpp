@@ -4,11 +4,13 @@
 #include <iostream>
 #include <memory>
 #include <mutex>
+#include <shared_mutex>
 #include <thread>
 
 using
 std::cout,
 std::mutex,
+std::shared_mutex,
 std::thread,
 std::atomic,
 std::format,
@@ -34,24 +36,26 @@ public:
 	}
 
 	void restore(unsigned int value, mutex& guard) {
-		guard.lock();
-		amount += value;
-		cout << format("{} restore {} = {}\n", get_id(), value, amount);
-		guard.unlock();
+		if (guard.try_lock()) {
+			amount += value;
+			cout << format("{} restore {} = {}\n", get_id(), value, amount);
+			guard.unlock();
+		}
 	}
 
-	void count(mutex& guard) {
+	void count(shared_mutex& guard) {
 		for (short x = 0; x < 10; ++x) {
-			guard.lock();
+			guard.lock_shared();
 			cout << format("{} loop {}\n", get_id(), x);
-			guard.unlock();
-			sleep_for(microseconds(500));
+			guard.unlock_shared();
+			sleep_for(microseconds(100));
 		}
 	}
 };
 
 static void MutualExclusion() {
 	mutex storeMtx{};
+	shared_mutex sharedStoreMtx{};
 	StoreBook store{ 255 };
 	atomic<int> atomicValue{};
 
@@ -83,8 +87,8 @@ static void MutualExclusion() {
 	cout << format(">>> amount: {}\n", store.get_amount());
 
 
-	thread task05{ [&]() {store.count(storeMtx); } };
-	thread task06{ [&]() {store.count(storeMtx); } };
+	thread task05{ [&]() {store.count(sharedStoreMtx); } };
+	thread task06{ [&]() {store.count(sharedStoreMtx); } };
 
 	task05.join(); 	task06.join(); 	// Step -> Main process await tasks
 	cout << format("[end] amount: {}\n", store.get_amount());
