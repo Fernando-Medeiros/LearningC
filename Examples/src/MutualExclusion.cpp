@@ -60,16 +60,16 @@ public:
 	*/
 	void write_count(shared_mutex& guard) {
 		for (short x = 0; x < 10; ++x) {
-			guard.lock_shared();
+			guard.lock(); // WRITE LOCK
 			count++;
 			cout << format("{} write loop {} count is {}\n", get_id(), x, count);
-			guard.unlock_shared();
+			guard.unlock();
 			sleep_for(microseconds(100));
 		}
 	}
 	void ready_count(shared_mutex& guard) {
 		for (short x = 0; x < 10; ++x) {
-			guard.lock_shared();
+			guard.lock_shared(); // READY LOCK
 			cout << format("{} ready loop {} count is {}\n", get_id(), x, count);
 			guard.unlock_shared();
 			sleep_for(microseconds(100));
