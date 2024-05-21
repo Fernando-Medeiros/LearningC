@@ -1,6 +1,7 @@
 **/x64
 **/build
 **/output
+**/Debug
 /.vs/C++/FileContentIndex
 /.vs/C++/v17
 **/.vs
