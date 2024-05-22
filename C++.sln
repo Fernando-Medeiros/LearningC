@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Examples", "Examples\Exampl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AdvancedC++", "AdvancedC++\AdvancedC++.vcxproj", "{DEE77E03-766C-47D9-B112-24100B11EDDF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowsForms", "WindowsForms\WindowsForms.vcxproj", "{1371FAF0-21C0-4087-834F-C48AEE2E599E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Release|x64.Build.0 = Release|x64
 		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Release|x86.ActiveCfg = Release|Win32
 		{DEE77E03-766C-47D9-B112-24100B11EDDF}.Release|x86.Build.0 = Release|Win32
+		{1371FAF0-21C0-4087-834F-C48AEE2E599E}.Debug|x64.ActiveCfg = Debug|x64
+		{1371FAF0-21C0-4087-834F-C48AEE2E599E}.Debug|x64.Build.0 = Debug|x64
+		{1371FAF0-21C0-4087-834F-C48AEE2E599E}.Debug|x86.ActiveCfg = Debug|Win32
+		{1371FAF0-21C0-4087-834F-C48AEE2E599E}.Debug|x86.Build.0 = Debug|Win32
+		{1371FAF0-21C0-4087-834F-C48AEE2E599E}.Release|x64.ActiveCfg = Release|x64
+		{1371FAF0-21C0-4087-834F-C48AEE2E599E}.Release|x64.Build.0 = Release|x64
+		{1371FAF0-21C0-4087-834F-C48AEE2E599E}.Release|x86.ActiveCfg = Release|Win32
+		{1371FAF0-21C0-4087-834F-C48AEE2E599E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
