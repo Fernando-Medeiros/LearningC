@@ -1,6 +1,7 @@
 #pragma once
 #include"Context.h"
 #include"Entity.h"
+#include "RegisterForm.h"
 
 namespace TodoWF {
 
@@ -35,6 +36,9 @@ namespace TodoWF {
 	private: System::Windows::Forms::Button^ LoginBtn;
 	private: System::Windows::Forms::Button^ CancelBtn;
 	private: System::Windows::Forms::CheckBox^ RememberCbx;
+	private: System::Windows::Forms::LinkLabel^ GoToRegister;
+
+
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -50,6 +54,7 @@ namespace TodoWF {
 			   this->LoginBtn = (gcnew System::Windows::Forms::Button());
 			   this->CancelBtn = (gcnew System::Windows::Forms::Button());
 			   this->RememberCbx = (gcnew System::Windows::Forms::CheckBox());
+			   this->GoToRegister = (gcnew System::Windows::Forms::LinkLabel());
 			   this->tableLayoutPanel1->SuspendLayout();
 			   this->SuspendLayout();
 			   // 
@@ -85,7 +90,7 @@ namespace TodoWF {
 				   | System::Windows::Forms::AnchorStyles::Right));
 			   this->EmailEntry->Location = System::Drawing::Point(15, 87);
 			   this->EmailEntry->Name = L"EmailEntry";
-			   this->EmailEntry->Size = System::Drawing::Size(419, 20);
+			   this->EmailEntry->Size = System::Drawing::Size(416, 20);
 			   this->EmailEntry->TabIndex = 2;
 			   // 
 			   // PasswordEntry
@@ -95,21 +100,21 @@ namespace TodoWF {
 			   this->PasswordEntry->Location = System::Drawing::Point(15, 139);
 			   this->PasswordEntry->Name = L"PasswordEntry";
 			   this->PasswordEntry->PasswordChar = '*';
-			   this->PasswordEntry->Size = System::Drawing::Size(419, 20);
+			   this->PasswordEntry->Size = System::Drawing::Size(416, 20);
 			   this->PasswordEntry->TabIndex = 3;
 			   // 
 			   // TitleLbl
 			   // 
 			   this->TitleLbl->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				   | System::Windows::Forms::AnchorStyles::Right));
-			   this->TitleLbl->AutoSize = true;
-			   this->TitleLbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->TitleLbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->TitleLbl->Location = System::Drawing::Point(11, 23);
+			   this->TitleLbl->Location = System::Drawing::Point(15, 9);
 			   this->TitleLbl->Name = L"TitleLbl";
-			   this->TitleLbl->Size = System::Drawing::Size(65, 25);
+			   this->TitleLbl->Size = System::Drawing::Size(416, 39);
 			   this->TitleLbl->TabIndex = 4;
 			   this->TitleLbl->Text = L"Login";
+			   this->TitleLbl->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			   // 
 			   // tableLayoutPanel1
 			   // 
@@ -126,20 +131,21 @@ namespace TodoWF {
 			   this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
 			   this->tableLayoutPanel1->RowCount = 1;
 			   this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			   this->tableLayoutPanel1->Size = System::Drawing::Size(419, 41);
+			   this->tableLayoutPanel1->Size = System::Drawing::Size(416, 41);
 			   this->tableLayoutPanel1->TabIndex = 5;
 			   // 
 			   // LoginBtn
 			   // 
 			   this->LoginBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				   | System::Windows::Forms::AnchorStyles::Right));
-			   this->LoginBtn->BackColor = System::Drawing::Color::DarkSeaGreen;
+			   this->LoginBtn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			   this->LoginBtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->LoginBtn->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			   this->LoginBtn->Location = System::Drawing::Point(3, 3);
 			   this->LoginBtn->Name = L"LoginBtn";
-			   this->LoginBtn->Size = System::Drawing::Size(203, 35);
+			   this->LoginBtn->Size = System::Drawing::Size(202, 35);
 			   this->LoginBtn->TabIndex = 0;
 			   this->LoginBtn->Text = L"Login";
 			   this->LoginBtn->UseVisualStyleBackColor = false;
@@ -149,13 +155,14 @@ namespace TodoWF {
 			   // 
 			   this->CancelBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				   | System::Windows::Forms::AnchorStyles::Right));
-			   this->CancelBtn->BackColor = System::Drawing::Color::DarkSalmon;
+			   this->CancelBtn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			   this->CancelBtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->CancelBtn->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			   this->CancelBtn->Location = System::Drawing::Point(212, 3);
+			   this->CancelBtn->Location = System::Drawing::Point(211, 3);
 			   this->CancelBtn->Name = L"CancelBtn";
-			   this->CancelBtn->Size = System::Drawing::Size(204, 35);
+			   this->CancelBtn->Size = System::Drawing::Size(202, 35);
 			   this->CancelBtn->TabIndex = 1;
 			   this->CancelBtn->Text = L"Cancel";
 			   this->CancelBtn->UseVisualStyleBackColor = false;
@@ -173,14 +180,29 @@ namespace TodoWF {
 			   this->RememberCbx->Text = L"Remember";
 			   this->RememberCbx->UseVisualStyleBackColor = true;
 			   // 
-			   // LoginView
+			   // GoToRegister
+			   // 
+			   this->GoToRegister->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
+			   this->GoToRegister->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->GoToRegister->Location = System::Drawing::Point(238, 173);
+			   this->GoToRegister->Name = L"GoToRegister";
+			   this->GoToRegister->Size = System::Drawing::Size(193, 23);
+			   this->GoToRegister->TabIndex = 11;
+			   this->GoToRegister->TabStop = true;
+			   this->GoToRegister->Text = L"Register";
+			   this->GoToRegister->TextAlign = System::Drawing::ContentAlignment::TopRight;
+			   this->GoToRegister->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &LoginForm::GoToRegisterCommand);
+			   // 
+			   // LoginForm
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->AutoSize = true;
 			   this->AutoValidate = System::Windows::Forms::AutoValidate::Disable;
 			   this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			   this->ClientSize = System::Drawing::Size(459, 261);
+			   this->ClientSize = System::Drawing::Size(456, 261);
+			   this->Controls->Add(this->GoToRegister);
 			   this->Controls->Add(this->RememberCbx);
 			   this->Controls->Add(this->tableLayoutPanel1);
 			   this->Controls->Add(this->TitleLbl);
@@ -188,7 +210,7 @@ namespace TodoWF {
 			   this->Controls->Add(this->EmailEntry);
 			   this->Controls->Add(this->PasswordLbl);
 			   this->Controls->Add(this->EmailLbl);
-			   this->Name = L"LoginView";
+			   this->Name = L"LoginForm";
 			   this->Text = L"Login";
 			   this->tableLayoutPanel1->ResumeLayout(false);
 			   this->ResumeLayout(false);
@@ -199,6 +221,7 @@ namespace TodoWF {
 
 	private: System::Void LoginBtnCommand(System::Object^ sender, System::EventArgs^ e) {
 		String^ query = "SELECT * FROM @table WHERE email='@email' AND password='@password'";
+
 		query = query->Replace("@table", "users");
 		query = query->Replace("@email", this->EmailEntry->Text);
 		query = query->Replace("@password", this->PasswordEntry->Text);
@@ -222,6 +245,14 @@ namespace TodoWF {
 
 	private: System::Void CancelBtnCommand(System::Object^ sender, System::EventArgs^ e) {
 		Close();
+	}
+
+	private: System::Void GoToRegisterCommand(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+		TodoWF::RegisterForm registerForm;
+		registerForm.ShowDialog();
+
+		EmailEntry->Text = registerForm.email;
+		PasswordEntry->Text = registerForm.password;
 	}
 
 	};

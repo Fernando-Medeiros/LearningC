@@ -9,7 +9,6 @@ void main(array<String^>^ args) {
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::EnableVisualStyles();
 	TodoWF::LoginForm loginForm;
-	TodoWF::TaskForm taskForm;
 
 	loginForm.ShowDialog();
 
@@ -17,6 +16,7 @@ void main(array<String^>^ args) {
 		MessageBox::Show("Não houve autenticação", "Main", MessageBoxButtons::OK);
 	}
 	else {
+		TodoWF::TaskForm taskForm;	
 		taskForm.user = loginForm.user;
 		Application::Run(% taskForm);
 	}
