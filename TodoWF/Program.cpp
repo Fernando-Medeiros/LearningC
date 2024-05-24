@@ -1,5 +1,5 @@
 #include "LoginForm.h"
-#include "TaskForm.h"
+#include "MainForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -16,8 +16,7 @@ void main(array<String^>^ args) {
 		MessageBox::Show("Não houve autenticação", "Main", MessageBoxButtons::OK);
 	}
 	else {
-		TodoWF::TaskForm taskForm;	
-		taskForm.user = loginForm.user;
-		Application::Run(% taskForm);
+		TodoWF::MainForm^ mainForm = gcnew TodoWF::MainForm(loginForm.user);
+		Application::Run(mainForm);
 	}
 }
