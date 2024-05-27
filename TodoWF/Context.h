@@ -9,7 +9,7 @@ namespace Context {
 		SqlConnection context{ ConnectionString() };
 
 		String^ ConnectionString() {
-			String^ str = "Data Source=@server;Initial Catalog=@database;Integrated Security=@security;Encrypt=@encrypt";
+			String^ str{ "Data Source=@server;Initial Catalog=@database;Integrated Security=@security;Encrypt=@encrypt" };
 			str = str->Replace("@server", "localhost\\SQLSERVER2022");
 			str = str->Replace("@database", "TodoDatabase");
 			str = str->Replace("@security", "True");
@@ -23,14 +23,15 @@ namespace Context {
 			}
 		}
 
-		void Write(String^ query) {
+		int Write(String^ query) {
 			SqlCommand command(query, % context);
 			try {
 				context.Open();
-				command.ExecuteNonQuery();
+				return command.ExecuteNonQuery();
 			}
 			catch (Exception^ ex) {
 				MessageBox::Show(ex->Message);
+				return 0;
 			}
 		}
 
