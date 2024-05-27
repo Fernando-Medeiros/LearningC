@@ -4,7 +4,7 @@ namespace Entity {
 
 	public ref class User {
 	public:
-		int id;
+		int id{ 0 };
 		String^ name{};
 		String^ email{};
 		String^ password{};
@@ -12,8 +12,12 @@ namespace Entity {
 
 	public ref class Task {
 	public:
-		int id;
+		int id{ 0 };
 		String^ title{};
 		String^ description{};
+
+		Task(int _id, String^ _title, String^ _description
+		) : id{ _id }, title{ _title }, description{ _description } {};
+
 	};
 }
