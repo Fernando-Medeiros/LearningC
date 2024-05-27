@@ -108,7 +108,7 @@ namespace TodoWF {
 			   this->EmailEntry->Location = System::Drawing::Point(3, 3);
 			   this->EmailEntry->Name = L"EmailEntry";
 			   this->EmailEntry->Size = System::Drawing::Size(262, 26);
-			   this->EmailEntry->TabIndex = 2;
+			   this->EmailEntry->TabIndex = 1;
 			   // 
 			   // PasswordEntry
 			   // 
@@ -120,7 +120,7 @@ namespace TodoWF {
 			   this->PasswordEntry->Name = L"PasswordEntry";
 			   this->PasswordEntry->PasswordChar = '*';
 			   this->PasswordEntry->Size = System::Drawing::Size(263, 26);
-			   this->PasswordEntry->TabIndex = 3;
+			   this->PasswordEntry->TabIndex = 2;
 			   // 
 			   // TitleLbl
 			   // 
@@ -164,7 +164,7 @@ namespace TodoWF {
 			   this->LoginBtn->Location = System::Drawing::Point(3, 3);
 			   this->LoginBtn->Name = L"LoginBtn";
 			   this->LoginBtn->Size = System::Drawing::Size(148, 35);
-			   this->LoginBtn->TabIndex = 0;
+			   this->LoginBtn->TabIndex = 5;
 			   this->LoginBtn->Text = L"Login";
 			   this->LoginBtn->UseVisualStyleBackColor = false;
 			   this->LoginBtn->Click += gcnew System::EventHandler(this, &LoginForm::LoginBtnCommand);
@@ -180,7 +180,7 @@ namespace TodoWF {
 			   this->CancelBtn->Location = System::Drawing::Point(157, 3);
 			   this->CancelBtn->Name = L"CancelBtn";
 			   this->CancelBtn->Size = System::Drawing::Size(149, 35);
-			   this->CancelBtn->TabIndex = 1;
+			   this->CancelBtn->TabIndex = 6;
 			   this->CancelBtn->Text = L"Cancel";
 			   this->CancelBtn->UseVisualStyleBackColor = false;
 			   this->CancelBtn->Click += gcnew System::EventHandler(this, &LoginForm::CancelBtnCommand);
@@ -196,7 +196,7 @@ namespace TodoWF {
 			   this->RememberCbx->Location = System::Drawing::Point(3, 3);
 			   this->RememberCbx->Name = L"RememberCbx";
 			   this->RememberCbx->Size = System::Drawing::Size(101, 22);
-			   this->RememberCbx->TabIndex = 6;
+			   this->RememberCbx->TabIndex = 3;
 			   this->RememberCbx->Text = L"Remember";
 			   this->RememberCbx->UseVisualStyleBackColor = true;
 			   // 
@@ -211,7 +211,7 @@ namespace TodoWF {
 			   this->GoToRegister->Location = System::Drawing::Point(156, 4);
 			   this->GoToRegister->Name = L"GoToRegister";
 			   this->GoToRegister->Size = System::Drawing::Size(147, 20);
-			   this->GoToRegister->TabIndex = 11;
+			   this->GoToRegister->TabIndex = 4;
 			   this->GoToRegister->TabStop = true;
 			   this->GoToRegister->Text = L"Register";
 			   this->GoToRegister->TextAlign = System::Drawing::ContentAlignment::TopRight;
@@ -261,7 +261,7 @@ namespace TodoWF {
 			   this->tableLayoutPanel3->Name = L"tableLayoutPanel3";
 			   this->tableLayoutPanel3->RowCount = 1;
 			   this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			   this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
+			   this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 31)));
 			   this->tableLayoutPanel3->Size = System::Drawing::Size(306, 31);
 			   this->tableLayoutPanel3->TabIndex = 14;
 			   // 
@@ -381,5 +381,5 @@ namespace TodoWF {
 		Show();
 	}
 
-};
+	};
 }
