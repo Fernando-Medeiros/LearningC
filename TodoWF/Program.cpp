@@ -13,7 +13,7 @@ void main(array<String^>^ args) {
 	loginForm.ShowDialog();
 
 	if (loginForm.user->id == 0) {
-		MessageBox::Show("Não houve autenticação", "Main", MessageBoxButtons::OK);
+		return;
 	}
 	else {
 		TodoWF::MainForm^ mainForm = gcnew TodoWF::MainForm(loginForm.user);
