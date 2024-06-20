@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleWF", "SimpleWF\Window
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TodoWF", "TodoWF\TodoWF.vcxproj", "{1BD016AE-E7E8-4002-A9E6-009768007F89}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QRReader", "QRReader\QRReader.vcxproj", "{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{1BD016AE-E7E8-4002-A9E6-009768007F89}.Release|x64.Build.0 = Release|x64
 		{1BD016AE-E7E8-4002-A9E6-009768007F89}.Release|x86.ActiveCfg = Release|Win32
 		{1BD016AE-E7E8-4002-A9E6-009768007F89}.Release|x86.Build.0 = Release|Win32
+		{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}.Debug|x64.ActiveCfg = Debug|x64
+		{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}.Debug|x64.Build.0 = Debug|x64
+		{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}.Debug|x86.ActiveCfg = Debug|Win32
+		{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}.Debug|x86.Build.0 = Debug|Win32
+		{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}.Release|x64.ActiveCfg = Release|x64
+		{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}.Release|x64.Build.0 = Release|x64
+		{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}.Release|x86.ActiveCfg = Release|Win32
+		{6EAC7AB7-6CDE-49FB-ADCC-BB33DBC7DB62}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

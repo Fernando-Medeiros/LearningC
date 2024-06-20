@@ -1,17 +1,32 @@
 #pragma once
 
+#include "../Core/Reader.h"
+
 namespace Views {
 
 	using
 		System::String,
+		System::Void,
+		System::Object,
+		System::EventArgs,
+		System::Threading::Thread,
+		System::Threading::ParameterizedThreadStart,
+		System::Windows::Forms::Label,
+		System::Windows::Forms::ListView,
 		System::Windows::Forms::Form;
 
 	public ref class MainView : public Form
 	{
+	private:
+		Thread^ threadComRead;
 	public:
 		MainView(void)
 		{
 			InitializeComponent();
+
+			threadComRead = gcnew Thread(gcnew ParameterizedThreadStart(&Core::Reader::start));
+			threadComRead->IsBackground = true;
+			threadComRead->Start(this);
 		}
 
 	protected:
@@ -23,8 +38,29 @@ namespace Views {
 			}
 		}
 
-#pragma region EVENTS
+#pragma region EVENTS 
+		delegate void Append(ListView^ list, Label^ label, String^ text);
 
+		static void AppendListView(ListView^ list, Label^ label, String^ text) {
+			list->Items->Add(text);
+			label->Text = list->Items->Count.ToString();
+		}
+
+	public:
+		void CodigosListPushBack(String^ text)
+		{
+			while (CodigosListView->InvokeRequired == false) {
+				Sleep(1);
+			}
+			if (CodigosListView->InvokeRequired)
+			{
+				CodigosListView->Invoke(
+					gcnew Append(AppendListView),
+					CodigosListView,
+					QuantidadeCodigosLabel,
+					text);
+			}
+		}
 #pragma endregion
 
 	private: System::Windows::Forms::TabControl^ Guias;
@@ -93,12 +129,13 @@ namespace Views {
 			   this->CodigosPanel->Name = L"CodigosPanel";
 			   this->CodigosPanel->RowCount = 1;
 			   this->CodigosPanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
-			   this->CodigosPanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 181)));
+			   this->CodigosPanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 182)));
 			   this->CodigosPanel->Size = System::Drawing::Size(200, 169);
 			   this->CodigosPanel->TabIndex = 1;
 			   // 
 			   // CodigosListView
 			   // 
+			   this->CodigosListView->Alignment = System::Windows::Forms::ListViewAlignment::SnapToGrid;
 			   this->CodigosListView->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				   | System::Windows::Forms::AnchorStyles::Left)
 				   | System::Windows::Forms::AnchorStyles::Right));
