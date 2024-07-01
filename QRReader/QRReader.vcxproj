@@ -81,7 +81,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -108,18 +108,24 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -130,17 +136,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core\Reader.cpp" />
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="Core\CommReader.cpp" />
+    <ClCompile Include="Core\CommReaderMetaData.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Views\MainView.cpp" />
-    <ClCompile Include="Views\ModalView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\Reader.h" />
+    <ClInclude Include="App.h" />
+    <ClInclude Include="Core\CommReader.h" />
+    <ClInclude Include="Core\CommReaderMetaData.h" />
     <ClInclude Include="Views\MainView.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Views\ModalView.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>

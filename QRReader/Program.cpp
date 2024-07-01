@@ -1,14 +1,12 @@
-#include "Views/MainView.h"
-
+#include "App.h"
 using namespace System;
 using namespace System::Windows::Forms;
+
 [STAThreadAttribute]
-
 void main(array<String^>^ args) {
-	Application::SetCompatibleTextRenderingDefault(false);
-	Application::EnableVisualStyles();
+    Application::SetCompatibleTextRenderingDefault(false);
+    Application::EnableVisualStyles();
 
-	auto mainView{gcnew Views::MainView()};
-
-	Application::Run(mainView);
+    App::Initialize();
+    Application::Run(App::Main);
 }
