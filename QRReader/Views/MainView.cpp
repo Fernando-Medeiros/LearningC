@@ -2,6 +2,7 @@
 #include "MainView.h"
 
 using
+System::Void,
 System::String,
 System::Threading::Thread,
 System::Threading::ParameterizedThreadStart;
@@ -39,4 +40,21 @@ void Views::MainView::InvokeCodePushBack(String^ message) {
     {
 	  App::Main->CodigosListView->Invoke(gcnew Core::CommReaderChanged(&CodePushBack), message);
     }
+}
+
+Void Views::MainView::FecharLoteButtonClicked(Object^ sender, EventArgs^ e)
+{
+    if (QuantidadeLotesBox->SelectedItem == nullptr) {
+	  App::ShowMessageBox("Falha", "Escolha a quantidade de lotes a ser fechado!");
+	  return;
+    }
+
+    auto quantidadeLote{ INT32::Parse(QuantidadeLotesBox->SelectedItem->ToString()) };
+
+    if (CodigosListView->Items->Count < quantidadeLote) {
+	  App::ShowMessageBox("Falha", "Não existem codigos o suficiente para fechar o lote com " + quantidadeLote);
+	  return;
+    }
+
+    return Void();
 }

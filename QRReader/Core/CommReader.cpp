@@ -155,15 +155,15 @@ void Core::CommReader::routine(Object^ sender)
 
     if (reader->firstPortChanged()) {
 
-	  reader->OnMessageRead("Leitor conectado com a porta: " + reader->getPort());
+	  reader->OnMessageRead("Informação", "Leitor conectado com a porta: " + reader->getPort());
 
 	  if (reader->setCommHandle()) {
-		reader->OnMessageRead("Leitor Desconectado");
+		reader->OnMessageRead("Falha", "Leitor Desconectado");
 		reader->close();
 		return;
 	  }
 	  if (reader->setCommTimeouts() == false) {
-		reader->OnMessageRead("Leitor com erro no timeout");
+		reader->OnMessageRead("Falha", "Leitor com erro no timeout");
 		reader->close();
 		return;
 	  }
@@ -176,15 +176,15 @@ void Core::CommReader::routine(Object^ sender)
 	  while (reader->keepRunning())
 	  {
 		if (reader->isInvalidHandleValue()) {
-		    reader->OnMessageRead("Leitor Desconectado");
+		    reader->OnMessageRead("Falha", "Leitor Desconectado");
 		    break;
 		}
 		if (reader->getCommState() == false) {
-		    reader->OnMessageRead("Leitor Desconhecido");
+		    reader->OnMessageRead("Falha", "Leitor Desconhecido");
 		    break;
 		}
 		if (reader->readFile() == false) {
-		    reader->OnMessageRead("Leitor Desconectado");
+		    reader->OnMessageRead("Falha", "Leitor Desconectado");
 		    break;
 		}
 		if (reader->isBytesRead()) {

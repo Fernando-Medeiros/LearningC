@@ -16,12 +16,12 @@ public:
     {
 	  Main = gcnew Views::MainView();
 
-	  Core::CommReader::OnMessageRead += gcnew Core::CommReaderChanged(App::ShowMessageBox);
+	  Core::CommReader::OnMessageRead += gcnew Core::CommReaderMessageChanged(App::ShowMessageBox);
     }
 
-    static void ShowMessageBox(String^ message)
+    static void ShowMessageBox(String^ caption, String^ message)
     {
-	  MessageBox::Show(message, "", MessageBoxButtons::OK);
+	  MessageBox::Show(message, caption, MessageBoxButtons::OK);
     }
 };
 

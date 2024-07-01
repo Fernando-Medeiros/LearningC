@@ -3,14 +3,15 @@
 
 namespace Core {
     using
+	  System::Enum,
 	  System::String,
 	  System::Object,
 	  System::IO::Ports::SerialPort,
 	  System::Windows::Forms::Form,
 	  System::Runtime::InteropServices::Marshal;
 
-
     delegate void CommReaderChanged(String^ message);
+    delegate void CommReaderMessageChanged(String^ caption, String^ message);
 
     public ref class CommReader {
     private:
@@ -38,7 +39,7 @@ namespace Core {
 
 	  static event CommReaderChanged^ OnBytesRead;
 	  static event CommReaderChanged^ OnBase64Read;
-	  static event CommReaderChanged^ OnMessageRead;
+	  static event CommReaderMessageChanged^ OnMessageRead;
 
 	  static void routine(Object^ sender);
     };
