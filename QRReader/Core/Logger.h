@@ -8,16 +8,15 @@ namespace Core {
 
     public ref class Logger
     {
-    private:
-	  String^ directory{ "C:\\solution\\log" };
-	  String^ onlyDateFormat{ "dd-MM-yyyy" };
-	  String^ dateTimeFormat{ "dd-MM-yyyy HH:mm:ss" };
     public:
+	  static bool isBusy{ false };
+	  String^ directory{ "C:\\solution\\log" };
+	  String^ dateFormat{ "dd-MM-yyyy" };
+	  String^ dateTimeFormat{ "dd-MM-yyyy HH:mm:ss" };
 	  Logger();
 	  ~Logger();
 	  void write(String^ caption, String^ log);
-	  void tryCreateDirectory(String^ path);
-	  void tryWriteLine(StreamWriter^ streamWriter, array<String^>^ payload);
+	  void createDirectory(String^ path);
 
 	  static event Tool::MessageChanged^ OnWriteChanged;
     };

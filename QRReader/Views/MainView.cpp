@@ -7,19 +7,13 @@
 
 using
 System::Void,
-System::String,
-System::Threading::Thread,
-System::Threading::ParameterizedThreadStart;
+System::String;
 
 Views::MainView::MainView()
 {
     InitializeComponent();
 
     Core::CommReader::OnBytesChanged += gcnew Tool::BufferChanged(InvokeCodePushBack);
-
-    auto  commThread = gcnew Thread(gcnew ParameterizedThreadStart(&Core::CommReader::routine));
-    commThread->IsBackground = true;
-    commThread->Start(this);
 }
 
 Views::MainView::~MainView()
@@ -50,14 +44,14 @@ void Views::MainView::InvokeCodePushBack(String^ message) {
 Void Views::MainView::FecharLoteButtonClicked(Object^ sender, EventArgs^ e)
 {
     if (QuantidadeLotesBox->SelectedItem == nullptr) {
-	  App::ShowMessageBox(Tool::Caption::Error, "Escolha a quantidade de lotes a ser fechado!");
+	  App::Show(Tool::Caption::Error, "Escolha a quantidade de lotes a ser fechado!");
 	  return;
     }
 
     auto quantidadeLote{ INT32::Parse(QuantidadeLotesBox->SelectedItem->ToString()) };
 
     if (CodigosListView->Items->Count < quantidadeLote) {
-	  App::ShowMessageBox(Tool::Caption::Error, "Não existem códigos o suficiente para fechar o lote com " + quantidadeLote);
+	  App::Show(Tool::Caption::Error, "Não existem códigos o suficiente para fechar o lote com " + quantidadeLote);
 	  return;
     }
 

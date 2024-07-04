@@ -184,10 +184,6 @@ void Core::CommReader::routine(Object^ sender)
 	  reader->getCommState();
 	  reader->beginRunning();
 
-	  reader->OnMessageChanged(
-		Tool::Caption::Info,
-		String::Format("Porta: {0}, Máximo Bytes: {1}, Máximo Buffer: {2}", reader->getPort(), maxBytes, maxBuffer));
-
 	  while (reader->keepRunning())
 	  {
 		if (reader->isInvalidHandleValue()) {

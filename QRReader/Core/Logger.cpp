@@ -1,32 +1,38 @@
+#include "../Tool/Tools.h"
 #include "Logger.h"
+
 
 using
 System::String,
 System::DateTime,
 System::IO::Directory;
 
-Core::Logger::Logger() { }
+Core::Logger::Logger()
+{
+    write(Tool::Caption::Info, "Aplicação iniciada");
+}
 
 Core::Logger::~Logger()
 {
     delete directory;
-    delete onlyDateFormat;
+    delete dateFormat;
     delete dateTimeFormat;
 }
 
 void Core::Logger::write(String^ caption, String^ log)
 {
-    if (log == nullptr) return;
+    while (isBusy) continue;
+    isBusy = true;
 
-    auto file{ String::Format("\\{0}-{1}.txt", "QReader", DateTime::Now.ToString(onlyDateFormat)) };
+    auto file{ String::Format("\\{0}-{1}.txt", "QReader", DateTime::Now.ToString(dateFormat)) };
 
     auto message{ String::Format("{0} [{1}] {2}\n", DateTime::Now.ToString(dateTimeFormat), caption, log) };
 
-    tryCreateDirectory(directory);
+    createDirectory(directory);
 
-    tryWriteLine(
-	  gcnew StreamWriter(directory + file, true),
-	  gcnew array<String^>{ message });
+    auto streamWriter = gcnew StreamWriter(directory + file, true);
+    streamWriter->WriteLineAsync(message);
+    streamWriter->Close();
 
     OnWriteChanged(caption, log);
 
@@ -34,25 +40,15 @@ void Core::Logger::write(String^ caption, String^ log)
     delete file;
     delete caption;
     delete message;
-}
-
-void Core::Logger::tryWriteLine(StreamWriter^ streamWriter, array<String^>^ payload)
-{
-    if (streamWriter == nullptr || payload->Length == 0) return;
-
-    for each (auto content in payload)
-    {
-	  streamWriter->WriteLine(content);
-    }
-    streamWriter->Close();
-
-    delete payload;
     delete streamWriter;
+    isBusy = false;
 }
 
-void Core::Logger::tryCreateDirectory(String^ path)
+void Core::Logger::createDirectory(String^ path)
 {
     if (Directory::Exists(path)) return;
 
     Directory::CreateDirectory(path);
+
+    write(Tool::Caption::Info, String::Format("Uma nova pasta foi criada em {0}", path));
 }
