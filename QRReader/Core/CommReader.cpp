@@ -1,4 +1,15 @@
+#include "../Tool/Tools.h"
 #include "CommReader.h"
+#include "CommReaderMetaData.h"
+#include <consoleapi.h>
+#include <cstdlib>
+#include <cstring>
+#include <fileapi.h>
+#include <handleapi.h>
+#include <malloc.h>
+#include <minwindef.h>
+#include <WinBase.h>
+#include <winnt.h>
 
 Core::CommReader::CommReader(CommReaderMetaData^ meta) : meta{ meta } {};
 
@@ -155,15 +166,15 @@ void Core::CommReader::routine(Object^ sender)
 
     if (reader->firstPortChanged()) {
 
-	  reader->OnMessageRead("Informação", "Leitor conectado com a porta: " + reader->getPort());
+	  reader->OnMessageChanged(Tool::Caption::Info, "Leitor conectado com a porta: " + reader->getPort());
 
 	  if (reader->setCommHandle()) {
-		reader->OnMessageRead("Falha", "Leitor Desconectado");
+		reader->OnMessageChanged(Tool::Caption::Error, "Leitor desconectado");
 		reader->close();
 		return;
 	  }
 	  if (reader->setCommTimeouts() == false) {
-		reader->OnMessageRead("Falha", "Leitor com erro no timeout");
+		reader->OnMessageChanged(Tool::Caption::Error, "Leitor com erro no timeout");
 		reader->close();
 		return;
 	  }
@@ -173,24 +184,30 @@ void Core::CommReader::routine(Object^ sender)
 	  reader->getCommState();
 	  reader->beginRunning();
 
+	  reader->OnMessageChanged(
+		Tool::Caption::Info,
+		String::Format("Porta: {0}, Máximo Bytes: {1}, Máximo Buffer: {2}", reader->getPort(), maxBytes, maxBuffer));
+
 	  while (reader->keepRunning())
 	  {
 		if (reader->isInvalidHandleValue()) {
-		    reader->OnMessageRead("Falha", "Leitor Desconectado");
+		    reader->OnMessageChanged(Tool::Caption::Error, "Leitor desconectado");
 		    break;
 		}
 		if (reader->getCommState() == false) {
-		    reader->OnMessageRead("Falha", "Leitor Desconhecido");
+		    reader->OnMessageChanged(Tool::Caption::Error, "Leitor desconhecido");
 		    break;
 		}
 		if (reader->readFile() == false) {
-		    reader->OnMessageRead("Falha", "Leitor Desconectado");
+		    reader->OnMessageChanged(Tool::Caption::Error, "Leitor desconectado");
 		    break;
 		}
 		if (reader->isBytesRead()) {
-		    reader->OnBytesRead(reader->getBuffer());
+		    reader->OnMessageChanged(Tool::Caption::Input, String::Format("Bytes lidos: {0}", meta->bytesRead));
+		    reader->OnBytesChanged(reader->getBuffer());
 		}
 	  }
+	  reader->OnMessageChanged(Tool::Caption::Info, "Leitor finalizado");
 	  reader->stopRunning();
 	  reader->close();
     }

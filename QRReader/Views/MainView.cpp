@@ -1,5 +1,9 @@
 #include "../App.h"
+#include "../Core/CommReader.h"
+#include "../Tool/Tools.h"
 #include "MainView.h"
+#include <basetsd.h>
+#include <synchapi.h>
 
 using
 System::Void,
@@ -11,7 +15,7 @@ Views::MainView::MainView()
 {
     InitializeComponent();
 
-    Core::CommReader::OnBytesRead += gcnew Core::CommReaderChanged(InvokeCodePushBack);
+    Core::CommReader::OnBytesChanged += gcnew Tool::BufferChanged(InvokeCodePushBack);
 
     auto  commThread = gcnew Thread(gcnew ParameterizedThreadStart(&Core::CommReader::routine));
     commThread->IsBackground = true;
@@ -29,6 +33,7 @@ Views::MainView::~MainView()
 void Views::MainView::CodePushBack(String^ message) {
     App::Main->CodigosListView->Items->Add(message);
     App::Main->QuantidadeCodigosLabel->Text = App::Main->CodigosListView->Items->Count.ToString();
+    App::Log->write(Tool::Caption::Input, message);
 }
 
 void Views::MainView::InvokeCodePushBack(String^ message) {
@@ -38,21 +43,21 @@ void Views::MainView::InvokeCodePushBack(String^ message) {
 
     if (App::Main->CodigosListView->InvokeRequired)
     {
-	  App::Main->CodigosListView->Invoke(gcnew Core::CommReaderChanged(&CodePushBack), message);
+	  App::Main->CodigosListView->Invoke(gcnew Tool::BufferChanged(&CodePushBack), message);
     }
 }
 
 Void Views::MainView::FecharLoteButtonClicked(Object^ sender, EventArgs^ e)
 {
     if (QuantidadeLotesBox->SelectedItem == nullptr) {
-	  App::ShowMessageBox("Falha", "Escolha a quantidade de lotes a ser fechado!");
+	  App::ShowMessageBox(Tool::Caption::Error, "Escolha a quantidade de lotes a ser fechado!");
 	  return;
     }
 
     auto quantidadeLote{ INT32::Parse(QuantidadeLotesBox->SelectedItem->ToString()) };
 
     if (CodigosListView->Items->Count < quantidadeLote) {
-	  App::ShowMessageBox("Falha", "Não existem codigos o suficiente para fechar o lote com " + quantidadeLote);
+	  App::ShowMessageBox(Tool::Caption::Error, "Não existem códigos o suficiente para fechar o lote com " + quantidadeLote);
 	  return;
     }
 

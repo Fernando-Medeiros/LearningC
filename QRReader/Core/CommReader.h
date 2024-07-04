@@ -1,4 +1,5 @@
 #pragma once
+#include "../Tool/Tools.h"
 #include "CommReaderMetaData.h"
 
 namespace Core {
@@ -9,9 +10,6 @@ namespace Core {
 	  System::IO::Ports::SerialPort,
 	  System::Windows::Forms::Form,
 	  System::Runtime::InteropServices::Marshal;
-
-    delegate void CommReaderChanged(String^ message);
-    delegate void CommReaderMessageChanged(String^ caption, String^ message);
 
     public ref class CommReader {
     private:
@@ -37,9 +35,8 @@ namespace Core {
 	  char* getPortToChar();
 	  wchar_t* getWideChar(const char* chars);
 
-	  static event CommReaderChanged^ OnBytesRead;
-	  static event CommReaderChanged^ OnBase64Read;
-	  static event CommReaderMessageChanged^ OnMessageRead;
+	  static event Tool::BufferChanged^ OnBytesChanged;
+	  static event Tool::MessageChanged^ OnMessageChanged;
 
 	  static void routine(Object^ sender);
     };

@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/CommReader.h"
+#include "Core/Logger.h"
 #include "Views/MainView.h"
 
 using
@@ -10,18 +10,9 @@ System::Windows::Forms::MessageBoxButtons;
 
 static ref class App {
 public:
+    static Core::Logger^ Log;
     static Views::MainView^ Main;
-
-    static void Initialize()
-    {
-	  Main = gcnew Views::MainView();
-
-	  Core::CommReader::OnMessageRead += gcnew Core::CommReaderMessageChanged(App::ShowMessageBox);
-    }
-
-    static void ShowMessageBox(String^ caption, String^ message)
-    {
-	  MessageBox::Show(message, caption, MessageBoxButtons::OK);
-    }
+    static void Start();
+    static void Close();
+    static void ShowMessageBox(String^ caption, String^ message);
 };
-
