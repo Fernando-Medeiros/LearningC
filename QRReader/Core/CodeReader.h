@@ -1,5 +1,5 @@
 #pragma once
-#include "../Tool/Tools.h"
+#include "../Commons/Common.h"
 #include "CodeReaderMetaData.h"
 
 namespace Core {
@@ -35,8 +35,8 @@ namespace Core {
 	  char* getPortToChar();
 	  wchar_t* getWideChar(const char* chars);
 
-	  static event Tool::BufferChanged^ OnBytesChanged;
-	  static event Tool::MessageChanged^ OnMessageChanged;
+	  static event Common::BufferChanged^ OnBytesChanged;
+	  static event Common::MessageChanged^ OnMessageChanged;
 
 	  static void routine(Object^ sender);
     };

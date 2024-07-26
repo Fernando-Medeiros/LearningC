@@ -1,4 +1,4 @@
-#include "../Tool/Tools.h"
+#include "../Commons/Common.h"
 #include "CodeReader.h"
 #include "CodeReaderMetaData.h"
 #include <consoleapi.h>
@@ -166,15 +166,15 @@ void Core::CodeReader::routine(Object^ sender)
 
     if (reader->firstPortChanged()) {
 
-	  reader->OnMessageChanged(Tool::Caption::Info, "Leitor conectado com a porta: " + reader->getPort());
+	  reader->OnMessageChanged(Common::Caption::Info, "Leitor conectado com a porta: " + reader->getPort());
 
 	  if (reader->setCommHandle()) {
-		reader->OnMessageChanged(Tool::Caption::Error, "Leitor desconectado");
+		reader->OnMessageChanged(Common::Caption::Error, "Leitor desconectado");
 		reader->close();
 		return;
 	  }
 	  if (reader->setCommTimeouts() == false) {
-		reader->OnMessageChanged(Tool::Caption::Error, "Leitor com erro no timeout");
+		reader->OnMessageChanged(Common::Caption::Error, "Leitor com erro no timeout");
 		reader->close();
 		return;
 	  }
@@ -187,23 +187,23 @@ void Core::CodeReader::routine(Object^ sender)
 	  while (reader->keepRunning())
 	  {
 		if (reader->isInvalidHandleValue()) {
-		    reader->OnMessageChanged(Tool::Caption::Error, "Leitor desconectado");
+		    reader->OnMessageChanged(Common::Caption::Error, "Leitor desconectado");
 		    break;
 		}
 		if (reader->getCommState() == false) {
-		    reader->OnMessageChanged(Tool::Caption::Error, "Leitor desconhecido");
+		    reader->OnMessageChanged(Common::Caption::Error, "Leitor desconhecido");
 		    break;
 		}
 		if (reader->readFile() == false) {
-		    reader->OnMessageChanged(Tool::Caption::Error, "Leitor desconectado");
+		    reader->OnMessageChanged(Common::Caption::Error, "Leitor desconectado");
 		    break;
 		}
 		if (reader->isBytesRead()) {
-		    reader->OnMessageChanged(Tool::Caption::Input, String::Format("Bytes lidos: {0}", meta->bytesRead));
+		    reader->OnMessageChanged(Common::Caption::Input, String::Format("Bytes lidos: {0}", meta->bytesRead));
 		    reader->OnBytesChanged(reader->getBuffer());
 		}
 	  }
-	  reader->OnMessageChanged(Tool::Caption::Info, "Leitor finalizado");
+	  reader->OnMessageChanged(Common::Caption::Info, "Leitor finalizado");
 	  reader->stopRunning();
 	  reader->close();
     }

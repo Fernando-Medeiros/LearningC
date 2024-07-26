@@ -1,7 +1,7 @@
 #include "App.h"
+#include "Commons/Common.h"
 #include "Core/CodeReader.h"
 #include "Core/Logger.h"
-#include "Tool/Tools.h"
 #include "Views/MainView.h"
 
 void App::Initialize()
@@ -13,14 +13,14 @@ void App::Initialize()
 
 void App::InitializeListeners()
 {
-    Core::Logger::OnWriteChanged += gcnew Tool::MessageChanged(Views::MainView::LogPushBack);
-    Core::CodeReader::OnBytesChanged += gcnew Tool::BufferChanged(Views::MainView::CodePushBack);
-    Core::CodeReader::OnMessageChanged += gcnew Tool::MessageChanged(App::Show);
+    Core::Logger::OnWriteChanged += gcnew Common::MessageChanged(Views::MainView::LogPushBack);
+    Core::CodeReader::OnBytesChanged += gcnew Common::BufferChanged(Views::MainView::CodePushBack);
+    Core::CodeReader::OnMessageChanged += gcnew Common::MessageChanged(App::Show);
 }
 
 void App::Close()
 {
-    Log->write(Tool::Caption::Info, "Aplicação finalizada \n");
+    Log->write(Common::Caption::Info, "Aplicação finalizada \n");
     Thread::Sleep(3);
 
     delete Log;

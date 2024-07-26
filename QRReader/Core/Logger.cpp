@@ -1,4 +1,4 @@
-#include "../Tool/Tools.h"
+#include "../Commons/Common.h"
 #include "Logger.h"
 
 using
@@ -46,5 +46,5 @@ void Core::Logger::createDirectory(String^ path)
 
     Directory::CreateDirectory(path);
 
-    write(Tool::Caption::Info, String::Format("Uma nova pasta foi criada em {0}", path));
+    write(Common::Caption::Info, String::Format("Uma nova pasta foi criada em {0}", path));
 }

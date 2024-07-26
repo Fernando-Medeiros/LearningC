@@ -1,13 +1,13 @@
 #pragma once
 
-namespace Tool {
+namespace Common {
     using
 	  System::String;
 
     public delegate void BufferChanged(String^ message);
     public delegate void MessageChanged(String^ caption, String^ message);
 
-    static ref struct Caption
+    ref struct Caption
     {
 	  static String^ Error = "Falha";
 	  static String^ Warning = "Alerta";

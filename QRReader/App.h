@@ -14,7 +14,7 @@ System::Windows::Forms::MessageBox,
 System::Windows::Forms::MessageBoxIcon,
 System::Windows::Forms::MessageBoxButtons;
 
-static ref class App {
+ref class App {
 public:
     static Core::Logger^ Log;
     static ArrayList^ Threads;

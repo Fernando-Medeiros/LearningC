@@ -141,7 +141,7 @@
     <ClCompile Include="Core\CodeReader.cpp" />
     <ClCompile Include="Core\CodeReaderMetaData.cpp" />
     <ClCompile Include="Core\Logger.cpp" />
-    <ClCompile Include="Tool\Tools.cpp" />
+    <ClCompile Include="Commons\Common.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Views\MainView.cpp" />
   </ItemGroup>
@@ -150,7 +150,7 @@
     <ClInclude Include="Core\CodeReader.h" />
     <ClInclude Include="Core\CodeReaderMetaData.h" />
     <ClInclude Include="Core\Logger.h" />
-    <ClInclude Include="Tool\Tools.h" />
+    <ClInclude Include="Commons\Common.h" />
     <ClInclude Include="Views\MainView.h">
       <FileType>CppForm</FileType>
     </ClInclude>

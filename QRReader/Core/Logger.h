@@ -1,5 +1,5 @@
 #pragma once
-#include "../Tool/Tools.h"
+#include "../Commons/Common.h"
 
 namespace Core {
     using
@@ -18,7 +18,7 @@ namespace Core {
 	  void write(String^ caption, String^ log);
 	  void createDirectory(String^ path);
 
-	  static event Tool::MessageChanged^ OnWriteChanged;
+	  static event Common::MessageChanged^ OnWriteChanged;
     };
 }
 
