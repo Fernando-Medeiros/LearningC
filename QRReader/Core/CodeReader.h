@@ -1,6 +1,6 @@
 #pragma once
 #include "../Tool/Tools.h"
-#include "CommReaderMetaData.h"
+#include "CodeReaderMetaData.h"
 
 namespace Core {
     using
@@ -11,12 +11,12 @@ namespace Core {
 	  System::Windows::Forms::Form,
 	  System::Runtime::InteropServices::Marshal;
 
-    public ref class CommReader {
+    public ref class CodeReader {
     private:
-	  CommReaderMetaData^ meta;
+	  CodeReaderMetaData^ meta;
     public:
-	  CommReader(CommReaderMetaData^ meta);
-	  ~CommReader();
+	  CodeReader(CodeReaderMetaData^ meta);
+	  ~CodeReader();
 	  void close();
 	  bool readFile();
 	  bool firstPortChanged();

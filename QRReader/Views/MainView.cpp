@@ -1,19 +1,17 @@
 #include "../App.h"
-#include "../Core/CommReader.h"
+#include "../Core/Logger.h"
 #include "../Tool/Tools.h"
 #include "MainView.h"
 #include <basetsd.h>
-#include <synchapi.h>
 
 using
 System::Void,
+System::Action,
 System::String;
 
 Views::MainView::MainView()
 {
     InitializeComponent();
-
-    Core::CommReader::OnBytesChanged += gcnew Tool::BufferChanged(InvokeCodePushBack);
 }
 
 Views::MainView::~MainView()
@@ -25,23 +23,34 @@ Views::MainView::~MainView()
 }
 
 void Views::MainView::CodePushBack(String^ message) {
-    App::Main->CodigosListView->Items->Add(message);
-    App::Main->QuantidadeCodigosLabel->Text = App::Main->CodigosListView->Items->Count.ToString();
-    App::Log->write(Tool::Caption::Input, message);
-}
-
-void Views::MainView::InvokeCodePushBack(String^ message) {
-    while (App::Main->CodigosListView->InvokeRequired == false) {
-	  Sleep(1);
+    if (App::Main->InvokeRequired == false) {
+	  App::Main->CodigosListView->Items->Add(message);
+	  App::Main->QuantidadeCodigosLabel->Text = App::Main->CodigosListView->Items->Count.ToString();
+	  App::Log->write(Tool::Caption::Input, message);
+	  return;
     }
 
-    if (App::Main->CodigosListView->InvokeRequired)
-    {
-	  App::Main->CodigosListView->Invoke(gcnew Tool::BufferChanged(&CodePushBack), message);
-    }
+    App::Dispatch(
+	  App::Main,
+	  gcnew Tool::BufferChanged(App::Main->CodePushBack),
+	  gcnew cli::array<Object^>{message});
 }
 
-Void Views::MainView::FecharLoteButtonClicked(Object^ sender, EventArgs^ e)
+void Views::MainView::LogPushBack(String^ caption, String^ message) {
+    if (App::Main->InvokeRequired == false) {
+	  App::Main->LogTextBox->AppendText(String::Format("[{0}] {1}\n", caption, message));
+	  return;
+    }
+
+    App::Dispatch(
+	  App::Main,
+	  gcnew Tool::MessageChanged(App::Main->LogPushBack),
+	  gcnew cli::array<Object^>{caption, message});
+}
+
+
+
+void Views::MainView::FecharLoteButtonClicked(Object^ sender, EventArgs^ e)
 {
     if (QuantidadeLotesBox->SelectedItem == nullptr) {
 	  App::Show(Tool::Caption::Error, "Escolha a quantidade de lotes a ser fechado!");
@@ -54,6 +63,4 @@ Void Views::MainView::FecharLoteButtonClicked(Object^ sender, EventArgs^ e)
 	  App::Show(Tool::Caption::Error, "Não existem códigos o suficiente para fechar o lote com " + quantidadeLote);
 	  return;
     }
-
-    return Void();
 }

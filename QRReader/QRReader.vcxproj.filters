@@ -21,10 +21,10 @@
     <ClCompile Include="Program.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Core\CommReader.cpp">
+    <ClCompile Include="Core\CodeReader.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Core\CommReaderMetaData.cpp">
+    <ClCompile Include="Core\CodeReaderMetaData.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="App.cpp">
@@ -41,10 +41,10 @@
     <ClInclude Include="Views\MainView.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Core\CommReader.h">
+    <ClInclude Include="Core\CodeReader.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Core\CommReaderMetaData.h">
+    <ClInclude Include="Core\CodeReaderMetaData.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="App.h">

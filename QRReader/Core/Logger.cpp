@@ -1,16 +1,12 @@
 #include "../Tool/Tools.h"
 #include "Logger.h"
 
-
 using
 System::String,
 System::DateTime,
 System::IO::Directory;
 
-Core::Logger::Logger()
-{
-    write(Tool::Caption::Info, "Aplicação iniciada");
-}
+Core::Logger::Logger() {}
 
 Core::Logger::~Logger()
 {

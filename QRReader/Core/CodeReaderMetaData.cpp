@@ -1,6 +1,6 @@
-#include "CommReaderMetaData.h"
+#include "CodeReaderMetaData.h"
 
-Core::CommReaderMetaData::CommReaderMetaData(
+Core::CodeReaderMetaData::CodeReaderMetaData(
     COMMTIMEOUTS& timeouts,
     DCB& params,
     DWORD& mode,

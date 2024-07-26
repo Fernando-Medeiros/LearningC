@@ -5,6 +5,7 @@ namespace Views {
 	  System::Void,
 	  System::String,
 	  System::Object,
+	  System::Delegate,
 	  System::EventArgs,
 	  System::Windows::Forms::Form,
 	  System::Windows::Forms::Label,
@@ -16,8 +17,8 @@ namespace Views {
 	  MainView();
 	  ~MainView();
 	  static void CodePushBack(String^ message);
-	  static void InvokeCodePushBack(String^ message);
-	  Void FecharLoteButtonClicked(Object^ sender, EventArgs^ e);
+	  static void LogPushBack(String^ caption, String^ message);
+	  void FecharLoteButtonClicked(Object^ sender, EventArgs^ e);
 
 #pragma endregion
     private: System::Windows::Forms::TabControl^ Guias;
@@ -33,6 +34,9 @@ namespace Views {
     private: System::Windows::Forms::ComboBox^ QuantidadeLotesBox;
     private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel2;
     private: System::Windows::Forms::Label^ QuantidadeLotesLabel;
+    private: System::Windows::Forms::TabPage^ GuiaLogs;
+    private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel3;
+    private: System::Windows::Forms::RichTextBox^ LogTextBox;
     private: System::ComponentModel::Container^ components;
 #pragma endregion
 #pragma region Windows Form Designer generated code
@@ -46,18 +50,23 @@ namespace Views {
 		   this->QuantidadeCodigosLabel = (gcnew System::Windows::Forms::Label());
 		   this->QuantidadeCodigosTagLabel = (gcnew System::Windows::Forms::Label());
 		   this->GuiaRelatorio = (gcnew System::Windows::Forms::TabPage());
+		   this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
 		   this->QuantidadeLotesBox = (gcnew System::Windows::Forms::ComboBox());
+		   this->QuantidadeLotesLabel = (gcnew System::Windows::Forms::Label());
 		   this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
 		   this->FecharLoteButton = (gcnew System::Windows::Forms::Button());
-		   this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
-		   this->QuantidadeLotesLabel = (gcnew System::Windows::Forms::Label());
+		   this->GuiaLogs = (gcnew System::Windows::Forms::TabPage());
+		   this->tableLayoutPanel3 = (gcnew System::Windows::Forms::TableLayoutPanel());
+		   this->LogTextBox = (gcnew System::Windows::Forms::RichTextBox());
 		   this->Guias->SuspendLayout();
 		   this->GuiaCodigos->SuspendLayout();
 		   this->CodigosPanel->SuspendLayout();
 		   this->QuantidadeTagPanel->SuspendLayout();
 		   this->GuiaRelatorio->SuspendLayout();
-		   this->tableLayoutPanel1->SuspendLayout();
 		   this->tableLayoutPanel2->SuspendLayout();
+		   this->tableLayoutPanel1->SuspendLayout();
+		   this->GuiaLogs->SuspendLayout();
+		   this->tableLayoutPanel3->SuspendLayout();
 		   this->SuspendLayout();
 		   // 
 		   // Guias
@@ -67,6 +76,7 @@ namespace Views {
 			 | System::Windows::Forms::AnchorStyles::Right));
 		   this->Guias->Controls->Add(this->GuiaCodigos);
 		   this->Guias->Controls->Add(this->GuiaRelatorio);
+		   this->Guias->Controls->Add(this->GuiaLogs);
 		   this->Guias->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 			 static_cast<System::Byte>(0)));
 		   this->Guias->Location = System::Drawing::Point(13, 13);
@@ -99,7 +109,7 @@ namespace Views {
 		   this->CodigosPanel->Name = L"CodigosPanel";
 		   this->CodigosPanel->RowCount = 1;
 		   this->CodigosPanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
-		   this->CodigosPanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 208)));
+		   this->CodigosPanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 221)));
 		   this->CodigosPanel->Size = System::Drawing::Size(200, 222);
 		   this->CodigosPanel->TabIndex = 1;
 		   // 
@@ -176,6 +186,23 @@ namespace Views {
 		   this->GuiaRelatorio->Text = L"Lotes";
 		   this->GuiaRelatorio->UseVisualStyleBackColor = true;
 		   // 
+		   // tableLayoutPanel2
+		   // 
+		   this->tableLayoutPanel2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+			 | System::Windows::Forms::AnchorStyles::Right));
+		   this->tableLayoutPanel2->ColumnCount = 1;
+		   this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+			 50)));
+		   this->tableLayoutPanel2->Controls->Add(this->QuantidadeLotesBox, 0, 1);
+		   this->tableLayoutPanel2->Controls->Add(this->QuantidadeLotesLabel, 0, 0);
+		   this->tableLayoutPanel2->Location = System::Drawing::Point(441, 6);
+		   this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
+		   this->tableLayoutPanel2->RowCount = 2;
+		   this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
+		   this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
+		   this->tableLayoutPanel2->Size = System::Drawing::Size(126, 59);
+		   this->tableLayoutPanel2->TabIndex = 2;
+		   // 
 		   // QuantidadeLotesBox
 		   // 
 		   this->QuantidadeLotesBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
@@ -189,6 +216,20 @@ namespace Views {
 		   this->QuantidadeLotesBox->Name = L"QuantidadeLotesBox";
 		   this->QuantidadeLotesBox->Size = System::Drawing::Size(120, 24);
 		   this->QuantidadeLotesBox->TabIndex = 1;
+		   // 
+		   // QuantidadeLotesLabel
+		   // 
+		   this->QuantidadeLotesLabel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			 | System::Windows::Forms::AnchorStyles::Left)
+			 | System::Windows::Forms::AnchorStyles::Right));
+		   this->QuantidadeLotesLabel->AutoSize = true;
+		   this->QuantidadeLotesLabel->Location = System::Drawing::Point(3, 3);
+		   this->QuantidadeLotesLabel->Margin = System::Windows::Forms::Padding(3);
+		   this->QuantidadeLotesLabel->Name = L"QuantidadeLotesLabel";
+		   this->QuantidadeLotesLabel->Size = System::Drawing::Size(120, 23);
+		   this->QuantidadeLotesLabel->TabIndex = 2;
+		   this->QuantidadeLotesLabel->Text = L"Quantidade Lote:";
+		   this->QuantidadeLotesLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 		   // 
 		   // tableLayoutPanel1
 		   // 
@@ -222,36 +263,44 @@ namespace Views {
 		   this->FecharLoteButton->UseVisualStyleBackColor = false;
 		   this->FecharLoteButton->Click += gcnew System::EventHandler(this, &MainView::FecharLoteButtonClicked);
 		   // 
-		   // tableLayoutPanel2
+		   // GuiaLogs
 		   // 
-		   this->tableLayoutPanel2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
-			 | System::Windows::Forms::AnchorStyles::Right));
-		   this->tableLayoutPanel2->ColumnCount = 1;
-		   this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-			 50)));
-		   this->tableLayoutPanel2->Controls->Add(this->QuantidadeLotesBox, 0, 1);
-		   this->tableLayoutPanel2->Controls->Add(this->QuantidadeLotesLabel, 0, 0);
-		   this->tableLayoutPanel2->Location = System::Drawing::Point(441, 6);
-		   this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
-		   this->tableLayoutPanel2->RowCount = 2;
-		   this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-		   this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-		   this->tableLayoutPanel2->Size = System::Drawing::Size(126, 59);
-		   this->tableLayoutPanel2->TabIndex = 2;
+		   this->GuiaLogs->Controls->Add(this->tableLayoutPanel3);
+		   this->GuiaLogs->Location = System::Drawing::Point(4, 25);
+		   this->GuiaLogs->Name = L"GuiaLogs";
+		   this->GuiaLogs->Padding = System::Windows::Forms::Padding(3);
+		   this->GuiaLogs->Size = System::Drawing::Size(570, 278);
+		   this->GuiaLogs->TabIndex = 2;
+		   this->GuiaLogs->Text = L"Logs";
+		   this->GuiaLogs->UseVisualStyleBackColor = true;
 		   // 
-		   // QuantidadeLotesLabel
+		   // tableLayoutPanel3
 		   // 
-		   this->QuantidadeLotesLabel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+		   this->tableLayoutPanel3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 			 | System::Windows::Forms::AnchorStyles::Left)
 			 | System::Windows::Forms::AnchorStyles::Right));
-		   this->QuantidadeLotesLabel->AutoSize = true;
-		   this->QuantidadeLotesLabel->Location = System::Drawing::Point(3, 3);
-		   this->QuantidadeLotesLabel->Margin = System::Windows::Forms::Padding(3);
-		   this->QuantidadeLotesLabel->Name = L"QuantidadeLotesLabel";
-		   this->QuantidadeLotesLabel->Size = System::Drawing::Size(120, 23);
-		   this->QuantidadeLotesLabel->TabIndex = 2;
-		   this->QuantidadeLotesLabel->Text = L"Quantidade Lote:";
-		   this->QuantidadeLotesLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+		   this->tableLayoutPanel3->ColumnCount = 1;
+		   this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+			 50)));
+		   this->tableLayoutPanel3->Controls->Add(this->LogTextBox, 0, 0);
+		   this->tableLayoutPanel3->Location = System::Drawing::Point(6, 6);
+		   this->tableLayoutPanel3->Name = L"tableLayoutPanel3";
+		   this->tableLayoutPanel3->RowCount = 1;
+		   this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
+		   this->tableLayoutPanel3->Size = System::Drawing::Size(558, 266);
+		   this->tableLayoutPanel3->TabIndex = 1;
+		   // 
+		   // LogTextBox
+		   // 
+		   this->LogTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			 | System::Windows::Forms::AnchorStyles::Left)
+			 | System::Windows::Forms::AnchorStyles::Right));
+		   this->LogTextBox->Location = System::Drawing::Point(3, 3);
+		   this->LogTextBox->Name = L"LogTextBox";
+		   this->LogTextBox->ReadOnly = true;
+		   this->LogTextBox->Size = System::Drawing::Size(552, 260);
+		   this->LogTextBox->TabIndex = 0;
+		   this->LogTextBox->Text = L"";
 		   // 
 		   // MainView
 		   // 
@@ -267,9 +316,11 @@ namespace Views {
 		   this->QuantidadeTagPanel->ResumeLayout(false);
 		   this->QuantidadeTagPanel->PerformLayout();
 		   this->GuiaRelatorio->ResumeLayout(false);
-		   this->tableLayoutPanel1->ResumeLayout(false);
 		   this->tableLayoutPanel2->ResumeLayout(false);
 		   this->tableLayoutPanel2->PerformLayout();
+		   this->tableLayoutPanel1->ResumeLayout(false);
+		   this->GuiaLogs->ResumeLayout(false);
+		   this->tableLayoutPanel3->ResumeLayout(false);
 		   this->ResumeLayout(false);
 
 	     }

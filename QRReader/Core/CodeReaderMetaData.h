@@ -5,7 +5,7 @@ namespace Core {
     using
 	  System::String;
 
-    public ref class CommReaderMetaData {
+    public ref class CodeReaderMetaData {
     public:
 	  char* buffer;
 	  bool running;
@@ -19,7 +19,7 @@ namespace Core {
 	  unsigned int maxSizeBuffer;
 
     public:
-	  CommReaderMetaData(
+	  CodeReaderMetaData(
 		COMMTIMEOUTS& timeouts,
 		DCB& params,
 		DWORD& mode,

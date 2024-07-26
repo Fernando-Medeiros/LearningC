@@ -1,6 +1,6 @@
 #include "../Tool/Tools.h"
-#include "CommReader.h"
-#include "CommReaderMetaData.h"
+#include "CodeReader.h"
+#include "CodeReaderMetaData.h"
 #include <consoleapi.h>
 #include <cstdlib>
 #include <cstring>
@@ -11,34 +11,34 @@
 #include <WinBase.h>
 #include <winnt.h>
 
-Core::CommReader::CommReader(CommReaderMetaData^ meta) : meta{ meta } {};
+Core::CodeReader::CodeReader(CodeReaderMetaData^ meta) : meta{ meta } {};
 
-Core::CommReader::~CommReader()
+Core::CodeReader::~CodeReader()
 {
     close();
 }
 
-void Core::CommReader::beginRunning()
+void Core::CodeReader::beginRunning()
 {
     meta->running = true;
 }
 
-void Core::CommReader::stopRunning()
+void Core::CodeReader::stopRunning()
 {
     meta->running = false;
 }
 
-bool Core::CommReader::keepRunning()
+bool Core::CodeReader::keepRunning()
 {
     return meta->running;
 }
 
-System::String^ Core::CommReader::getPort()
+System::String^ Core::CodeReader::getPort()
 {
     return meta->port;
 }
 
-System::String^ Core::CommReader::getBuffer()
+System::String^ Core::CodeReader::getBuffer()
 {
     auto keys = getWideChar(meta->buffer);
 
@@ -50,7 +50,7 @@ System::String^ Core::CommReader::getBuffer()
     return serial;
 }
 
-wchar_t* Core::CommReader::getWideChar(const char* chars)
+wchar_t* Core::CodeReader::getWideChar(const char* chars)
 {
     const size_t size = strlen(chars) + 1;
 
@@ -61,7 +61,7 @@ wchar_t* Core::CommReader::getWideChar(const char* chars)
     return com;
 }
 
-char* Core::CommReader::getPortToChar()
+char* Core::CodeReader::getPortToChar()
 {
     auto _port = meta->port;
     auto _buffer = (char*)malloc(sizeof(char) * 255);
@@ -70,48 +70,48 @@ char* Core::CommReader::getPortToChar()
     return _buffer;
 }
 
-void Core::CommReader::close()
+void Core::CodeReader::close()
 {
     free(meta->buffer);
     CloseHandle(meta->handle);
 }
 
-bool Core::CommReader::readFile()
+bool Core::CodeReader::readFile()
 {
     return ReadFile(meta->handle, meta->buffer, meta->maxSizeBuffer, &meta->bytesRead, NULL);
 }
 
-bool Core::CommReader::getCommState()
+bool Core::CodeReader::getCommState()
 {
     return GetCommState(meta->handle, &meta->params);
 }
 
-bool Core::CommReader::setCommTimeouts()
+bool Core::CodeReader::setCommTimeouts()
 {
     return SetCommTimeouts(meta->handle, &meta->timeouts);
 }
 
-bool Core::CommReader::setCommConsoleMode()
+bool Core::CodeReader::setCommConsoleMode()
 {
     return SetConsoleMode(meta->handle, meta->mode);
 }
 
-bool Core::CommReader::escapeCommFunction()
+bool Core::CodeReader::escapeCommFunction()
 {
     return EscapeCommFunction(meta->handle, CLRDTR);
 }
 
-bool Core::CommReader::isBytesRead()
+bool Core::CodeReader::isBytesRead()
 {
     return     meta->bytesRead > 0 && meta->bytesRead <= meta->maxBytesRead ? true : false;
 }
 
-bool Core::CommReader::isInvalidHandleValue()
+bool Core::CodeReader::isInvalidHandleValue()
 {
     return     meta->handle == INVALID_HANDLE_VALUE;
 }
 
-bool Core::CommReader::firstPortChanged()
+bool Core::CodeReader::firstPortChanged()
 {
     auto ports = SerialPort::GetPortNames();
 
@@ -126,7 +126,7 @@ bool Core::CommReader::firstPortChanged()
     return false;
 }
 
-bool Core::CommReader::setCommHandle()
+bool Core::CodeReader::setCommHandle()
 {
     auto  com = getWideChar(getPortToChar());
 
@@ -142,7 +142,7 @@ bool Core::CommReader::setCommHandle()
 }
 
 
-void Core::CommReader::routine(Object^ sender)
+void Core::CodeReader::routine(Object^ sender)
 {
     DCB params{};
     DWORD mode{};
@@ -161,8 +161,8 @@ void Core::CommReader::routine(Object^ sender)
     timeouts.ReadTotalTimeoutMultiplier = 1;
     timeouts.WriteTotalTimeoutMultiplier = 1;
 
-    auto meta = gcnew CommReaderMetaData(timeouts, params, mode, bytesRead, maxBytes, maxBuffer);
-    auto reader = gcnew CommReader(meta);
+    auto meta = gcnew CodeReaderMetaData(timeouts, params, mode, bytesRead, maxBytes, maxBuffer);
+    auto reader = gcnew CodeReader(meta);
 
     if (reader->firstPortChanged()) {
 

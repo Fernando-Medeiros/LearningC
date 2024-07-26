@@ -4,8 +4,10 @@
 
 using
 System::String,
+System::Delegate,
 System::DateTime,
 System::Threading::Thread,
+System::Windows::Forms::Form,
 System::Collections::ArrayList,
 System::Threading::ParameterizedThreadStart,
 System::Windows::Forms::MessageBox,
@@ -17,9 +19,10 @@ public:
     static Core::Logger^ Log;
     static ArrayList^ Threads;
     static Views::MainView^ Main;
-    static void Start();
     static void Close();
-    static void StartCommReaderThread();
-
+    static void Initialize();
+    static void InitializeListeners();
+    static void InitializeCodeReaderThread();
     static void Show(String^ caption, String^ message);
+    static void Dispatch(Form^ form, Delegate^ callback, cli::array<Object^>^ args);
 };

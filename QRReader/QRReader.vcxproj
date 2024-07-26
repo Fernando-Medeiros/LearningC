@@ -25,6 +25,7 @@
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>QRReader</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>7.0</WindowsTargetPlatformMinVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -137,8 +138,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="Core\CommReader.cpp" />
-    <ClCompile Include="Core\CommReaderMetaData.cpp" />
+    <ClCompile Include="Core\CodeReader.cpp" />
+    <ClCompile Include="Core\CodeReaderMetaData.cpp" />
     <ClCompile Include="Core\Logger.cpp" />
     <ClCompile Include="Tool\Tools.cpp" />
     <ClCompile Include="Program.cpp" />
@@ -146,8 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
-    <ClInclude Include="Core\CommReader.h" />
-    <ClInclude Include="Core\CommReaderMetaData.h" />
+    <ClInclude Include="Core\CodeReader.h" />
+    <ClInclude Include="Core\CodeReaderMetaData.h" />
     <ClInclude Include="Core\Logger.h" />
     <ClInclude Include="Tool\Tools.h" />
     <ClInclude Include="Views\MainView.h">

@@ -7,7 +7,9 @@ void main(array<String^>^ args) {
     Application::SetCompatibleTextRenderingDefault(false);
     Application::EnableVisualStyles();
 
-    App::Start();
+    App::Initialize();
+    App::InitializeListeners();
+    App::InitializeCodeReaderThread();
     Application::Run(App::Main);
     App::Close();
 }
