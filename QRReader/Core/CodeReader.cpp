@@ -103,12 +103,12 @@ bool Core::CodeReader::escapeCommFunction()
 
 bool Core::CodeReader::isBytesRead()
 {
-    return     meta->bytesRead > 0 && meta->bytesRead <= meta->maxBytesRead ? true : false;
+    return meta->bytesRead > 0 && meta->bytesRead <= meta->maxBytesRead ? true : false;
 }
 
 bool Core::CodeReader::isInvalidHandleValue()
 {
-    return     meta->handle == INVALID_HANDLE_VALUE;
+    return meta->handle == INVALID_HANDLE_VALUE;
 }
 
 bool Core::CodeReader::firstPortChanged()
@@ -116,11 +116,7 @@ bool Core::CodeReader::firstPortChanged()
     auto ports = SerialPort::GetPortNames();
 
     if (ports->Length > 0) {
-	  meta->port = "\\\\.\\";
-
-	  for each (auto c in ports[0]->ToCharArray()) {
-		meta->port += c;
-	  }
+	  meta->port = "\\\\.\\" + ports[ports->Length - 1];
 	  return true;
     }
     return false;

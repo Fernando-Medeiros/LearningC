@@ -1,4 +1,6 @@
 #include "App.h"
+#include "Views/MainView.h"
+
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -8,8 +10,12 @@ void main(array<String^>^ args) {
     Application::EnableVisualStyles();
 
     App::Initialize();
+    App::ConfigureViews();
     App::InitializeListeners();
     App::InitializeCodeReaderThread();
-    Application::Run(App::Main);
+
+    Application::Run(
+	  (Views::MainView^)App::Service->Get(Views::MainView::typeid));
+
     App::Close();
 }

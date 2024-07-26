@@ -2,13 +2,19 @@
 #include "Commons/Common.h"
 #include "Core/CodeReader.h"
 #include "Core/Logger.h"
+#include "Core/ServiceHandler.h"
 #include "Views/MainView.h"
 
 void App::Initialize()
 {
     Log = gcnew Core::Logger();
     Threads = gcnew ArrayList(0);
-    Main = gcnew Views::MainView();
+    Service = gcnew Core::ServiceHandler();
+}
+
+void App::ConfigureViews()
+{
+    Service->AddSingleton(gcnew Views::MainView());
 }
 
 void App::InitializeListeners()
@@ -24,8 +30,8 @@ void App::Close()
     Thread::Sleep(3);
 
     delete Log;
-    delete Main;
     delete Threads;
+    delete Service;
 }
 
 void App::Show(String^ caption, String^ message)

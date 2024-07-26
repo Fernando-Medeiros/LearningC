@@ -1,6 +1,6 @@
 #include "../App.h"
-#include "../Core/Logger.h"
 #include "../Commons/Common.h"
+#include "../Core/Logger.h"
 #include "MainView.h"
 #include <basetsd.h>
 
@@ -23,28 +23,32 @@ Views::MainView::~MainView()
 }
 
 void Views::MainView::CodePushBack(String^ message) {
-    if (App::Main->InvokeRequired == false) {
-	  App::Main->CodigosListView->Items->Add(message);
-	  App::Main->QuantidadeCodigosLabel->Text = App::Main->CodigosListView->Items->Count.ToString();
+    auto main = (MainView^)App::Service->Get(MainView::typeid);
+
+    if (main->InvokeRequired == false) {
+	  main->CodigosListView->Items->Add(message);
+	  main->QuantidadeCodigosLabel->Text = main->CodigosListView->Items->Count.ToString();
 	  App::Log->write(Common::Caption::Input, message);
 	  return;
     }
 
     App::Dispatch(
-	  App::Main,
-	  gcnew Common::BufferChanged(App::Main->CodePushBack),
+	  main,
+	  gcnew Common::BufferChanged(MainView::CodePushBack),
 	  gcnew cli::array<Object^>{message});
 }
 
 void Views::MainView::LogPushBack(String^ caption, String^ message) {
-    if (App::Main->InvokeRequired == false) {
-	  App::Main->LogTextBox->AppendText(String::Format("[{0}] {1}\n", caption, message));
+    auto main = (MainView^)App::Service->Get(MainView::typeid);
+
+    if (main->InvokeRequired == false) {
+	  main->LogTextBox->AppendText(String::Format("[{0}] {1}\n", caption, message));
 	  return;
     }
 
     App::Dispatch(
-	  App::Main,
-	  gcnew Common::MessageChanged(App::Main->LogPushBack),
+	  main,
+	  gcnew Common::MessageChanged(MainView::LogPushBack),
 	  gcnew cli::array<Object^>{caption, message});
 }
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "Core/Logger.h"
-#include "Views/MainView.h"
+#include "Core/ServiceHandler.h"
 
 using
 System::String,
@@ -16,11 +16,13 @@ System::Windows::Forms::MessageBoxButtons;
 
 ref class App {
 public:
-    static Core::Logger^ Log;
     static ArrayList^ Threads;
-    static Views::MainView^ Main;
+    static Core::Logger^ Log;
+    static Core::ServiceHandler^ Service;
+
     static void Close();
     static void Initialize();
+    static void ConfigureViews();
     static void InitializeListeners();
     static void InitializeCodeReaderThread();
     static void Show(String^ caption, String^ message);
